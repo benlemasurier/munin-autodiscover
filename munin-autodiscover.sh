@@ -6,7 +6,7 @@ MUNIN_PORT=4949
 MUNIN_CONFIG="/usr/local/etc/munin/munin.conf"
 
 NMAP=`(which nmap)`
-TMP_FILE=`(tempfile)`
+TMP_FILE=`(mktemp -t munin.XXX)`
 
 add_host ()
 {
@@ -57,7 +57,7 @@ check_config ()
 
 cleanup ()
 {
-  echo "cleaning up..."
+  rm $TMP_FILE;
 }
 
 usage ()
@@ -72,5 +72,6 @@ fi
 
 check_config;
 scan $1;
+cleanup;
 
 exit 0
