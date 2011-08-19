@@ -1,0 +1,6 @@
+steps:
+
+1. modify MUNIN_CONFIG to match your configuration
+2. setup a cronjob to monitor your network e.g.:
+  */30 * * * * /usr/local/bin/munin-autodiscover.sh 192.168.1.0/24 > /dev/null
+3. no step 3
